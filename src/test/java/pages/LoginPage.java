@@ -50,6 +50,7 @@ public class LoginPage {
         assertEquals(HOME_PAGE, driver.getCurrentUrl());
     }
 
+    @Step("Ожидание загрузки страницы")
     public void waitForNextPage(){
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.urlContains(HOME_PAGE));}

@@ -73,17 +73,20 @@ public class HomePage {
         return driver.findElement(fillingsButton);
     }
 
+    @Step("Проверка видимости кнопки Оформить заказ")
     public boolean isOrderButtonDisplayed(){
         return driver.findElement(orderButton).isDisplayed();
     }
 
+    @Step("Ожидание пока кнопка Соусы будет в фокусе")
     public void waitForSauces(){
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.attributeContains(getSaucesButton(), "class", "current"));
     }
-
+    @Step("Ожидание пока Булки будет в фокусе")
     public void waitForBuns(){
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.attributeContains(getBunsButton(), "class", "current"));
     }
+    @Step("Ожидание пока загрузится кнопка Оформить заказ")
     public void waitForNextPage(){
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.elementToBeClickable(orderButton));}

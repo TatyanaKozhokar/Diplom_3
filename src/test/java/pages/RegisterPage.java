@@ -74,6 +74,7 @@ public class RegisterPage {
         assertEquals(LOGIN_LINK, driver.getCurrentUrl());
     }
 
+    @Step("Ожидание загрузки страницы")
     public void waitForNextPage(){
         new WebDriverWait(driver, Duration.ofSeconds(10))
             .until(ExpectedConditions.urlContains(LOGIN_LINK));}

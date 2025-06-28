@@ -24,7 +24,6 @@ public class LoginButtonTest {
     UserData userData;
     UserApi userApi = new UserApi();
     String accessToken;
-    ProfilePage profilePage;
     HomePage homePage;
     RegisterPage registerPage;
     LoginPage loginPage;
