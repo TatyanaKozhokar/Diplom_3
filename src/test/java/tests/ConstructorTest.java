@@ -15,17 +15,19 @@ public class ConstructorTest {
     HomePage homePage;
 
     @Before
-    public void SetUp() {
+    public void setUp() {
         driver = WebDriverFactory.setupDriver();
         homePage = new HomePage(driver);
-        driver.get(homePage.getHomepageUrl());
+        driver.get(homePage.HOMEPAGE_URL);
     }
 
     @Description("Тест переключателя Булки")
     @Test
     public void testBunsButton() {
         homePage.pressSaucesButton();
+        homePage.waitForSauces();
         homePage.pressBunButton();
+        homePage.waitForBuns();
         assertTrue(homePage.getBunsButton().getAttribute("class").contains("current"));
     }
 
@@ -33,10 +35,11 @@ public class ConstructorTest {
     @Test
     public void testSaucesButton() {
         homePage.pressSaucesButton();
+        homePage.waitForSauces();
         assertTrue(homePage.getSaucesButton().getAttribute("class").contains("current"));
     }
 
-    @Description("Тест переключателя Начинкиgit remote add origin https://github.com/TatyanaKozhokar/Diplom_3.git")
+    @Description("Тест переключателя Начинки")
     @Test
     public void testFillingsButton() {
         homePage.pressFillingsButton();

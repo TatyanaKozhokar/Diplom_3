@@ -1,9 +1,14 @@
 package pages;
 
+import io.qameta.allure.Step;
 import jdk.jfr.Description;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static org.junit.Assert.assertEquals;
 
@@ -19,57 +24,74 @@ public class HomePage {
     private final By bunsButton = By.xpath("//div[contains(@class, 'tab_tab__')]//span[text()='Булки']/..");
     private final By saucesButton = By.xpath("//div[contains(@class, 'tab_tab__')]//span[text()='Соусы']/..");
     private final By fillingsButton = By.xpath("//div[contains(@class, 'tab_tab__')]//span[text()='Начинки']/..");
+    private final By orderButton = By.xpath("//button[text()='Оформить заказ']");
+    public final String HOMEPAGE_URL = "https://stellarburgers.nomoreparties.site";
+    final String LOGIN_URL = "https://stellarburgers.nomoreparties.site/login";
 
-    @Description("Стартовая ссылка страницы")
-    public String getHomepageUrl() {
-        return "https://stellarburgers.nomoreparties.site";}
 
-    @Description("Кнопка Личный Кабинет")
+    @Step("Кнопка Личный Кабинет")
     public void pressPersonalAccountButton(){
         driver.findElement(personalAccountButton).click();
     }
 
-    @Description("Кнопка Войти в аккаунт")
+    @Step("Кнопка Войти в аккаунт")
     public void pressEnterInAccountButton(){
         driver.findElement(enterInAccountButton).click();
     }
 
-    @Description("Проверка ссылки")
+    @Step("Проверка ссылки")
     public void checkLink(){
-        String loginLink = "https://stellarburgers.nomoreparties.site/login";
-        assertEquals(loginLink, driver.getCurrentUrl());
+        assertEquals(LOGIN_URL, driver.getCurrentUrl());
     }
 
-    @Description("Нажатие переключателя Булки")
+    @Step("Нажатие переключателя Булки")
     public void pressBunButton(){
         driver.findElement(bunsButton).click();
     }
 
-    @Description("Нажатие переключателя Соусы")
+    @Step("Нажатие переключателя Соусы")
     public void pressSaucesButton(){
         driver.findElement(saucesButton).click();
     }
 
-    @Description("Нажатие переключателя Начинки")
+    @Step("Нажатие переключателя Начинки")
     public void pressFillingsButton(){
         driver.findElement(fillingsButton).click();
     }
 
-    @Description("Получение локатора кнопки Соусы")
+    @Step("Получение локатора кнопки Соусы")
     public WebElement getSaucesButton(){
         return driver.findElement(saucesButton);
     }
 
-    @Description("Получение локатора кнопки Булки")
+    @Step("Получение локатора кнопки Булки")
     public WebElement getBunsButton(){
         return driver.findElement(bunsButton);
     }
 
-    @Description("Получение локатора кнопки Начинки")
+    @Step("Получение локатора кнопки Начинки")
     public WebElement getFillingsButton(){
         return driver.findElement(fillingsButton);
     }
 
+    public boolean isOrderButtonDisplayed(){
+        return driver.findElement(orderButton).isDisplayed();
+    }
+
+    public void waitForFillings(){
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.attributeContains(getFillingsButton(), "class", "current"));
+    }
+
+    public void waitForSauces(){
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.attributeContains(getSaucesButton(), "class", "current"));
+    }
+
+    public void waitForBuns(){
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.attributeContains(getBunsButton(), "class", "current"));
+    }
+    public void waitForNextPage(){
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.elementToBeClickable(orderButton));}
 
 
     }
