@@ -77,10 +77,6 @@ public class HomePage {
         return driver.findElement(orderButton).isDisplayed();
     }
 
-    public void waitForFillings(){
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.attributeContains(getFillingsButton(), "class", "current"));
-    }
-
     public void waitForSauces(){
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.attributeContains(getSaucesButton(), "class", "current"));
     }
