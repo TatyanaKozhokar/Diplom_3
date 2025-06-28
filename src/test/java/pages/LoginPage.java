@@ -14,7 +14,7 @@ public class LoginPage {
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
-    public final String LOGIN_PAGE = "https://stellarburgers.nomoreparties.site/login";
+
     public final String HOME_PAGE = "https://stellarburgers.nomoreparties.site";
 
     private final WebDriver driver;
@@ -43,11 +43,6 @@ public class LoginPage {
     @Step("Нажатие кнопки Войти")
     public void pressLoginButton(){
         driver.findElement(enterButton).click();
-    }
-
-    @Step("Проверка ссылки")
-    public void checkLink(){
-        assertEquals(HOME_PAGE, driver.getCurrentUrl());
     }
 
     @Step("Ожидание загрузки страницы")
