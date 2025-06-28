@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>Diplom___3</artifactId>
+    <artifactId>Diplom_3</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -27,7 +27,8 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectj.version}</version>
-            <scope>runtime</scope>  <!-- важно для javaagent -->
+            <scope>runtime</scope>
+            <!--  важно для javaagent  -->
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>

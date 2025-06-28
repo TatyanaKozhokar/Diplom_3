@@ -2,9 +2,7 @@ package tests;
 
 import api.LoginData;
 import api.UserApi;
-import api.UserData;
 import driver.WebDriverFactory;
-import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import jdk.jfr.Description;
 import net.datafaker.Faker;
@@ -12,11 +10,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.RegisterPage;
 
-import java.time.Duration;
 
 import static org.junit.Assert.assertTrue;
 

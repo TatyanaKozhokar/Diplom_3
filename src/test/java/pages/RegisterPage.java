@@ -1,7 +1,6 @@
 package pages;
 
 import io.qameta.allure.Step;
-import jdk.jfr.Description;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
