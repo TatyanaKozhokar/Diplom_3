@@ -44,7 +44,6 @@ public class RegisterTest {
         RestAssured.baseURI = UserApi.BASE_URL;
         loginData = new LoginData(email, password);
         accessToken = userApi.loginAndGetAccessToken(loginData);
-        userApi.deleteUser(accessToken);
     }
 
     @Description("Проверка регистрации при заполнении формы коротким паролем")
@@ -57,6 +56,9 @@ public class RegisterTest {
 
     @After
     public void tearDown() {
+        if (accessToken != null){
+            userApi.deleteUser(accessToken);
+        }
         if (driver != null) {
             driver.quit();
         }

@@ -1,6 +1,7 @@
 package api;
 
 
+import io.qameta.allure.Step;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
@@ -13,6 +14,7 @@ public class UserApi {
     static final String LOGIN = "/api/auth/login";
 
 
+    @Step("Создание пользователя через api")
     public String createUserAndGetAccessToken(api.UserData userData) {
         Response response = given()
                 .header("Content-type", "application/json")
@@ -24,6 +26,7 @@ public class UserApi {
         return jsonPath.getString("accessToken");
     }
 
+    @Step("Авторизация и получение токена")
     public String loginAndGetAccessToken(api.LoginData loginData) {
         Response response = given()
                 .header("Content-type", "application/json")
@@ -35,6 +38,7 @@ public class UserApi {
         return jsonPath.getString("accessToken");
     }
 
+    @Step("Удаление пользователя")
     public void deleteUser(String accessToken){
         given()
                 .header("Authorization", accessToken)
